@@ -3021,19 +3021,11 @@
             "named": true
           },
           {
-            "type": "impl_declaration",
-            "named": true
-          },
-          {
             "type": "int_literal",
             "named": true
           },
           {
             "type": "list_literal",
-            "named": true
-          },
-          {
-            "type": "loop_declaration",
             "named": true
           },
           {
@@ -3073,10 +3065,6 @@
             "named": true
           },
           {
-            "type": "stop_statement",
-            "named": true
-          },
-          {
             "type": "string_literal",
             "named": true
           },
@@ -3094,14 +3082,6 @@
           },
           {
             "type": "type_binary_expression",
-            "named": true
-          },
-          {
-            "type": "type_declaration",
-            "named": true
-          },
-          {
-            "type": "var_declaration",
             "named": true
           }
         ]

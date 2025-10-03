@@ -1745,7 +1745,7 @@
                                   },
                                   {
                                     "type": "SYMBOL",
-                                    "name": "_statement"
+                                    "name": "_expression"
                                   }
                                 ]
                               },
@@ -1838,7 +1838,7 @@
                                         },
                                         {
                                           "type": "SYMBOL",
-                                          "name": "_statement"
+                                          "name": "_expression"
                                         }
                                       ]
                                     },

@@ -4,7 +4,7 @@
   caller: (identifier) @function)
 
 (call_expression
-  caller: (identifer) @function.builtin
+  caller: (identifier) @function.builtin
   (#match? @function.builtin "^(trim|print|len|range|ok|err|some)$"))
 
 ; Function definitions
@@ -31,7 +31,6 @@
 
 "." @punctuation.delimiter
 "," @punctuation.delimiter
-";" @punctuation.delimiter
 
 "(" @punctuation.bracket
 ")" @punctuation.bracket

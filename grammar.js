@@ -143,6 +143,7 @@ module.exports = grammar({
           $.member_expression,
           $.pipe_expression,
           $.call_expression,
+          $.call_node_expression,
           $.if_declaration,
           $.match_declaration,
         ),
@@ -160,6 +161,8 @@ module.exports = grammar({
 
     identifier: (_) =>
       prec(PREC.primary, /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/),
+    type_identifier: (_) =>
+      prec(145, /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/),
 
     func_expression: ($) =>
       seq(
@@ -172,7 +175,7 @@ module.exports = grammar({
     impl_declaration: ($) =>
       seq(
         "impl",
-        field("name", $.identifier),
+        field("name", $.type_identifier),
         "{",
         field("functions", seq(repeat($.var_declaration))),
         "}",
@@ -195,13 +198,12 @@ module.exports = grammar({
       prec.left(
         seq(
           "struct",
-          field("name", $.identifier),
           optional($.key_type_list_object_val),
         ),
       ),
 
     enum_member_declaration: ($) =>
-      seq(field("name", $.identifier), optional($.key_type_list_object_val)),
+      seq(field("name", $.type_identifier), optional($.key_type_list_object_val)),
 
     key_type_list_object_val: ($) =>
       choice(
@@ -314,7 +316,7 @@ module.exports = grammar({
         145,
         prec.left(
           seq(
-            field("root", $.identifier),
+            field("root", $.type_identifier),
             choice(
               seq($.member_expr_member, $.key_value),
               seq(repeat1($.member_expr_member)),
@@ -323,7 +325,7 @@ module.exports = grammar({
         ),
       ),
     member_expr_member: ($) =>
-      choice(seq("[", $._expression, "]"), seq(".", $.identifier)),
+      choice(seq("[", $._expression, "]"), seq(".", $.type_identifier), $.call_expression),
     stop_statement: ($) =>
       prec(-10, choice("break", "continue", seq("return", $._expression))),
 
@@ -402,7 +404,7 @@ module.exports = grammar({
               "->",
               field("return", $.data_type),
             ),
-            $.identifier,
+            $.type_identifier,
           ),
         ),
       ),
@@ -427,10 +429,15 @@ module.exports = grammar({
         ),
       ),
 
-    call_expression: ($) =>
+    call_node_expression: ($) =>
       prec(
         PREC.unary,
         seq(field("caller", $._expression), field("args", $.argument_list)),
+      ),
+    call_expression: ($) =>
+      prec(
+        PREC.primary,
+        seq(field("caller", $.identifier), field("args", $.argument_list)),
       ),
     argument_list: ($) =>
       seq("(", seq(commaSep(field("value", $._statement))), ")"),

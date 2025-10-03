@@ -114,6 +114,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "call_node_expression"
+          },
+          {
+            "type": "SYMBOL",
             "name": "if_declaration"
           },
           {
@@ -155,6 +159,14 @@
     "identifier": {
       "type": "PREC",
       "value": 150,
+      "content": {
+        "type": "PATTERN",
+        "value": "(r#)?[_\\p{XID_Start}][_\\p{XID_Continue}]*"
+      }
+    },
+    "type_identifier": {
+      "type": "PREC",
+      "value": 145,
       "content": {
         "type": "PATTERN",
         "value": "(r#)?[_\\p{XID_Start}][_\\p{XID_Continue}]*"
@@ -238,7 +250,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "type_identifier"
           }
         },
         {
@@ -367,14 +379,6 @@
             "value": "struct"
           },
           {
-            "type": "FIELD",
-            "name": "name",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
-          },
-          {
             "type": "CHOICE",
             "members": [
               {
@@ -397,7 +401,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "type_identifier"
           }
         },
         {
@@ -1330,7 +1334,7 @@
               "name": "root",
               "content": {
                 "type": "SYMBOL",
-                "name": "identifier"
+                "name": "type_identifier"
               }
             },
             {
@@ -1396,9 +1400,13 @@
             },
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "type_identifier"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "call_expression"
         }
       ]
     },
@@ -2136,7 +2144,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "type_identifier"
             }
           ]
         }
@@ -2288,7 +2296,7 @@
         ]
       }
     },
-    "call_expression": {
+    "call_node_expression": {
       "type": "PREC",
       "value": 140,
       "content": {
@@ -2300,6 +2308,31 @@
             "content": {
               "type": "SYMBOL",
               "name": "_expression"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "args",
+            "content": {
+              "type": "SYMBOL",
+              "name": "argument_list"
+            }
+          }
+        ]
+      }
+    },
+    "call_expression": {
+      "type": "PREC",
+      "value": 150,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "caller",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
             }
           },
           {

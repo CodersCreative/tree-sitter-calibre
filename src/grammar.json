@@ -70,14 +70,6 @@
           },
           {
             "type": "SYMBOL",
-            "name": "true"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "false"
-          },
-          {
-            "type": "SYMBOL",
             "name": "scope"
           },
           {
@@ -164,12 +156,30 @@
         "value": "(r#)?[_\\p{XID_Start}][_\\p{XID_Continue}]*"
       }
     },
-    "type_identifier": {
+    "_type_identifier": {
       "type": "PREC",
       "value": 145,
       "content": {
-        "type": "PATTERN",
-        "value": "(r#)?[_\\p{XID_Start}][_\\p{XID_Continue}]*"
+        "type": "ALIAS",
+        "content": {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        "named": true,
+        "value": "type_identifier"
+      }
+    },
+    "_field_identifier": {
+      "type": "PREC",
+      "value": 140,
+      "content": {
+        "type": "ALIAS",
+        "content": {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        "named": true,
+        "value": "field_identifier"
       }
     },
     "func_expression": {
@@ -250,7 +260,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "type_identifier"
+            "name": "_type_identifier"
           }
         },
         {
@@ -291,7 +301,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "_field_identifier"
           }
         },
         {
@@ -401,7 +411,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "type_identifier"
+            "name": "_field_identifier"
           }
         },
         {
@@ -1334,7 +1344,7 @@
               "name": "root",
               "content": {
                 "type": "SYMBOL",
-                "name": "type_identifier"
+                "name": "_type_identifier"
               }
             },
             {
@@ -1400,7 +1410,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "type_identifier"
+              "name": "_field_identifier"
             }
           ]
         },
@@ -1575,7 +1585,7 @@
                       "name": "value",
                       "content": {
                         "type": "SYMBOL",
-                        "name": "identifier"
+                        "name": "_field_identifier"
                       }
                     },
                     {
@@ -1586,7 +1596,7 @@
                           "name": "key",
                           "content": {
                             "type": "SYMBOL",
-                            "name": "identifier"
+                            "name": "_field_identifier"
                           }
                         },
                         {
@@ -1622,7 +1632,7 @@
                             "name": "value",
                             "content": {
                               "type": "SYMBOL",
-                              "name": "identifier"
+                              "name": "_field_identifier"
                             }
                           },
                           {
@@ -1633,7 +1643,7 @@
                                 "name": "key",
                                 "content": {
                                   "type": "SYMBOL",
-                                  "name": "identifier"
+                                  "name": "_field_identifier"
                                 }
                               },
                               {
@@ -2144,7 +2154,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "type_identifier"
+              "name": "_type_identifier"
             }
           ]
         }
@@ -5164,22 +5174,6 @@
             }
           ]
         }
-      }
-    },
-    "true": {
-      "type": "PREC",
-      "value": 150,
-      "content": {
-        "type": "STRING",
-        "value": "true"
-      }
-    },
-    "false": {
-      "type": "PREC",
-      "value": 150,
-      "content": {
-        "type": "STRING",
-        "value": "false"
       }
     },
     "comment": {

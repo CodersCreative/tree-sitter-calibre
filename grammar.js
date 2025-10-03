@@ -132,8 +132,6 @@ module.exports = grammar({
           $.float_literal,
           $.imaginary_literal,
           $.rune_literal,
-          $.true,
-          $.false,
           $.scope,
           $.parens,
           $.tuple_literal,
@@ -161,8 +159,9 @@ module.exports = grammar({
 
     identifier: (_) =>
       prec(PREC.primary, /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/),
-    type_identifier: (_) =>
-      prec(145, /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/),
+
+    _type_identifier: $ => prec(145, alias($.identifier, $.type_identifier)),
+    _field_identifier: $ => prec(140, alias($.identifier, $.field_identifier)),
 
     func_expression: ($) =>
       seq(
@@ -175,7 +174,7 @@ module.exports = grammar({
     impl_declaration: ($) =>
       seq(
         "impl",
-        field("name", $.type_identifier),
+        field("name", $._type_identifier),
         "{",
         field("functions", seq(repeat($.var_declaration))),
         "}",
@@ -184,7 +183,7 @@ module.exports = grammar({
     type_declaration: ($) =>
       seq(
         "type",
-        field("name", $.identifier),
+        field("name", $._field_identifier),
         "=",
         choice($.data_type, $.enum_declaration, $.struct_declaration),
       ),
@@ -203,7 +202,7 @@ module.exports = grammar({
       ),
 
     enum_member_declaration: ($) =>
-      seq(field("name", $.type_identifier), optional($.key_type_list_object_val)),
+      seq(field("name", $._field_identifier), optional($.key_type_list_object_val)),
 
     key_type_list_object_val: ($) =>
       choice(
@@ -316,7 +315,7 @@ module.exports = grammar({
         145,
         prec.left(
           seq(
-            field("root", $.type_identifier),
+            field("root", $._type_identifier),
             choice(
               seq($.member_expr_member, $.key_value),
               seq(repeat1($.member_expr_member)),
@@ -325,7 +324,7 @@ module.exports = grammar({
         ),
       ),
     member_expr_member: ($) =>
-      choice(seq("[", $._expression, "]"), seq(".", $.type_identifier), $.call_expression),
+      choice(seq("[", $._expression, "]"), seq(".", $._field_identifier), $.call_expression),
     stop_statement: ($) =>
       prec(-10, choice("break", "continue", seq("return", $._expression))),
 
@@ -346,9 +345,9 @@ module.exports = grammar({
         seq(
           commaSep1(
             choice(
-              field("value", $.identifier),
+              field("value", $._field_identifier),
               seq(
-                field("key", $.identifier),
+                field("key", $._field_identifier),
                 ":",
                 field("value", $._statement),
               ),
@@ -404,7 +403,7 @@ module.exports = grammar({
               "->",
               field("return", $.data_type),
             ),
-            $.type_identifier,
+            $._type_identifier,
           ),
         ),
       ),
@@ -572,9 +571,6 @@ module.exports = grammar({
           ),
         ),
       ),
-
-    true: (_) => prec(PREC.primary, "true"),
-    false: (_) => prec(PREC.primary, "false"),
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
     comment: (_) =>

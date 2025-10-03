@@ -157,8 +157,7 @@ module.exports = grammar({
         $._expression,
       ),
 
-    identifier: (_) =>
-      prec(PREC.primary, /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/),
+    identifier: (_) => /[_\p{XID_Start}][_\p{XID_Continue}]*/,
 
     _type_identifier: $ => alias($.identifier, $.type_identifier),
     _field_identifier: $ => alias($.identifier, $.field_identifier),
@@ -430,14 +429,11 @@ module.exports = grammar({
 
     call_node_expression: ($) =>
       prec(
-        PREC.unary,
+        -1,
         seq(field("caller", $._expression), field("args", $.argument_list)),
       ),
     call_expression: ($) =>
-      prec(
-        PREC.primary,
         seq(field("caller", $.identifier), field("args", $.argument_list)),
-      ),
     argument_list: ($) =>
       seq("(", seq(commaSep(field("value", $._statement))), ")"),
 

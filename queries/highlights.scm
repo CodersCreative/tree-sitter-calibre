@@ -9,25 +9,22 @@
 
 ; Function definitions
 
-(func_expression
-  name: (identifier) @function)
-
-(match_declaration
-  name: (identifier) @function.method)
-
 (enum_member_declaration
-  name: (identifier) @variable.member)
+  name: (field_identifier) @variable.member)
 
 (type_declaration
-  name: (identifier) @type.definition)
+  name: (field_identifier) @type.definition)
 ; Identifiers
 
 (data_type) @type
 (member_expr_member) @property
+(type_identifier) @type
+(field_identifier) @property
 (identifier) @variable
 
 "->" @punctuation.special
 "=>" @punctuation.special
+"|>" @punctuation.special
 
 "." @punctuation.delimiter
 "," @punctuation.delimiter
@@ -41,6 +38,7 @@
 "<" @punctuation.bracket
 ">" @punctuation.bracket
 
+(mutability) @keyword
 ; Operators
 
 [
@@ -50,7 +48,6 @@
   "!="
   ".."
   "..="
-  "**="
   "**"
   "*"
   "*="
@@ -89,19 +86,13 @@
   "match"
   "const"
   "continue"
-  "self"
   "async"
-  "await"
   "try"
-  "mut"
   "impl"
   "for"
   "fn"
   "let"
-  "trait"
   "struct"
-  "super"
-  "global"
 ] @keyword
 
 "return" @keyword.return
@@ -110,11 +101,6 @@
   "if"
   "else"
 ] @keyword.conditional
-
-[
-  "import"
-  "from"
-] @keyword.import
 
 [
   "struct"
@@ -138,10 +124,5 @@
 ] @number
 
 (float_literal) @number.float
-
-[
-  (true)
-  (false)
-] @constant.builtin
 
 (comment) @comment

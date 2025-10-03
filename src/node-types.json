@@ -1125,11 +1125,6 @@
     }
   },
   {
-    "type": "field_identifier",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "float_literal",
     "named": true,
     "fields": {}
@@ -1463,11 +1458,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "identifier",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "if_comparison",
@@ -4377,11 +4367,6 @@
     }
   },
   {
-    "type": "type_identifier",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "var_declaration",
     "named": true,
     "fields": {
@@ -4763,6 +4748,10 @@
     "named": true
   },
   {
+    "type": "field_identifier",
+    "named": true
+  },
+  {
     "type": "float",
     "named": false
   },
@@ -4773,6 +4762,10 @@
   {
     "type": "for",
     "named": false
+  },
+  {
+    "type": "identifier",
+    "named": true
   },
   {
     "type": "if",
@@ -4833,6 +4826,10 @@
   {
     "type": "type",
     "named": false
+  },
+  {
+    "type": "type_identifier",
+    "named": true
   },
   {
     "type": "{",

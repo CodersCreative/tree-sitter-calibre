@@ -149,12 +149,8 @@
       ]
     },
     "identifier": {
-      "type": "PREC",
-      "value": 150,
-      "content": {
-        "type": "PATTERN",
-        "value": "(r#)?[_\\p{XID_Start}][_\\p{XID_Continue}]*"
-      }
+      "type": "PATTERN",
+      "value": "[_\\p{XID_Start}][_\\p{XID_Continue}]*"
     },
     "_type_identifier": {
       "type": "ALIAS",
@@ -2300,7 +2296,7 @@
     },
     "call_node_expression": {
       "type": "PREC",
-      "value": 140,
+      "value": -1,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2324,29 +2320,25 @@
       }
     },
     "call_expression": {
-      "type": "PREC",
-      "value": 150,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "caller",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
-          },
-          {
-            "type": "FIELD",
-            "name": "args",
-            "content": {
-              "type": "SYMBOL",
-              "name": "argument_list"
-            }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "caller",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
           }
-        ]
-      }
+        },
+        {
+          "type": "FIELD",
+          "name": "args",
+          "content": {
+            "type": "SYMBOL",
+            "name": "argument_list"
+          }
+        }
+      ]
     },
     "argument_list": {
       "type": "SEQ",

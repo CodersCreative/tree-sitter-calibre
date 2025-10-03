@@ -160,8 +160,8 @@ module.exports = grammar({
     identifier: (_) =>
       prec(PREC.primary, /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/),
 
-    _type_identifier: $ => prec(145, alias($.identifier, $.type_identifier)),
-    _field_identifier: $ => prec(140, alias($.identifier, $.field_identifier)),
+    _type_identifier: $ => alias($.identifier, $.type_identifier),
+    _field_identifier: $ => alias($.identifier, $.field_identifier),
 
     func_expression: ($) =>
       seq(
@@ -315,7 +315,7 @@ module.exports = grammar({
         145,
         prec.left(
           seq(
-            field("root", $._type_identifier),
+            field("root", $.identifier),
             choice(
               seq($.member_expr_member, $.key_value),
               seq(repeat1($.member_expr_member)),
@@ -345,7 +345,7 @@ module.exports = grammar({
         seq(
           commaSep1(
             choice(
-              field("value", $._field_identifier),
+              field("value", $.identifier),
               seq(
                 field("key", $._field_identifier),
                 ":",

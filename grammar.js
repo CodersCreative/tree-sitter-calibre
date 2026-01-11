@@ -453,7 +453,17 @@ module.exports = grammar({
         ),
       ),
 
-    try_expression: ($) => prec(PREC.primary, seq("try", $._expression)),
+    try_expression: ($) =>
+      prec(
+        PREC.primary,
+        prec.left(
+          seq(
+            "try",
+            $._expression,
+            optional(seq(optional(seq(":", $.identifier)), $.block)),
+          ),
+        ),
+      ),
     debug_expression: ($) => prec(PREC.primary, seq("debug", $._expression)),
 
     not_expression: ($) =>

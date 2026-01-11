@@ -5,7 +5,7 @@
 
 (call_expression
   caller: (identifier) @function.builtin
-  (#match? @function.builtin "^(trim|print|len|range|ok|err|some)$"))
+  (#match? @function.builtin "^(trim|print|len|range|ok|err|some|discriminant)$"))
 
 ; Function definitions
 

@@ -42,8 +42,7 @@ const assignmentOperators = multiplicativeOperators
 
 const char = /[^"\n\\]+/;
 
-const newline = /\n/;
-const terminator = choice(newline, ";", "\0");
+const terminator = choice(";", "/\n/");
 
 const hexDigit = /[0-9a-fA-F]/;
 const octalDigit = /[0-7]/;
@@ -111,9 +110,9 @@ const imaginaryLiteral = seq(
 module.exports = grammar({
   name: "calibre",
 
-  extras: ($) => [/\s/, /\n/, ";", $.comment],
+  extras: ($) => [/\s/, $.comment],
   rules: {
-    source_file: ($) => seq(repeat($._statement)),
+    source_file: ($) => seq(repeat($._delimited_statement)),
 
     // conficts: ($) => [[$.var_declaration, $.mutability]],
 
@@ -125,6 +124,7 @@ module.exports = grammar({
           $.type_binary_expression,
           $.binary_expression,
           $.try_expression,
+          $.debug_expression,
           $.identifier,
           $.func_expression,
           $.string_literal,
@@ -140,11 +140,13 @@ module.exports = grammar({
           $.assignment_expression,
           $.object_expression,
           $.member_expression,
+          $.scope_member_expression,
           $.pipe_expression,
           $.call_expression,
           $.call_node_expression,
           $.if_declaration,
           $.match_declaration,
+          choice(";", /\n/),
         ),
       ),
 
@@ -158,9 +160,13 @@ module.exports = grammar({
         $._expression,
       ),
 
+    _delimited_statement: ($) => seq($._statement, terminator),
+
     identifier: (_) => /[_\p{XID_Start}][_\p{XID_Continue}]*/,
 
-    _type_identifier: ($) => alias($.identifier, $.type_identifier),
+    _type_identifier: ($) =>
+      prec(PREC.primary, alias($.identifier, $.type_identifier)),
+    _scope_identifier: ($) => alias($.identifier, $.scope_identifier),
     _field_identifier: ($) => alias($.identifier, $.field_identifier),
 
     func_expression: ($) =>
@@ -197,10 +203,7 @@ module.exports = grammar({
       prec.left(seq("struct", optional($.key_type_list_object_val))),
 
     enum_member_declaration: ($) =>
-      seq(
-        field("name", $._field_identifier),
-        optional($.key_type_list_object_val),
-      ),
+      seq(field("name", $._field_identifier), optional(seq(":", $.data_type))),
 
     key_type_list_object_val: ($) =>
       choice(
@@ -219,8 +222,23 @@ module.exports = grammar({
         seq("(", field("types", seq(commaSep1($.data_type))), ")"),
       ),
     parens: ($) => prec(145, seq("(", $._statement, ")")),
-    list_literal: ($) => seq("[", seq(commaSep($._statement)), "]"),
-    or_list: ($) => seq(sep1($._statement, "|")),
+    list_literal: ($) =>
+      seq($.data_type, "[", seq(commaSep($._statement)), "]"),
+    match_arm_start: ($) =>
+      choice(
+        "_",
+        seq(
+          choice(seq("let", optional("mut")), "const"),
+          field("name", $.identifier),
+        ),
+        seq(
+          ".",
+          field("variant", $._field_identifier),
+          optional(seq(":", $.identifier)),
+        ),
+        $._expression,
+      ),
+    or_list: ($) => seq(sep1($.match_arm_start, "|")),
     conditionals_list: ($) => seq("if", sep1("if", $._statement)),
     if_declaration: ($) =>
       prec.left(
@@ -278,30 +296,51 @@ module.exports = grammar({
         field("value", $._statement),
       ),
     loop_declaration: ($) =>
-      seq("for", field("loop_type", $.loop_type), field("body", $.block)),
+      seq(
+        "for",
+        optional(field("loop_type", $.loop_type)),
+        field("body", $.block),
+      ),
 
-    loop_type: ($) =>
-      choice($.for_loop_type, $.foreach_loop_type, $._statement),
+    loop_type: ($) => choice($.for_loop_type, $._statement),
     for_loop_type: ($) =>
       prec(
         2,
         seq(field("name", $.identifier), "in", field("value", $._statement)),
       ),
-    foreach_loop_type: ($) =>
-      prec(
-        1,
-        seq(field("name", $.identifier), "in", field("value", $._statement)),
-      ),
     block: ($) => seq("=>", $._statement),
     scope: ($) => prec(PREC.primary, seq("{", optional($.statement_list), "}")),
-    statement_list: ($) => repeat1($._statement),
+    statement_list: ($) => repeat1($._delimited_statement),
+    scope_member_expression: ($) =>
+      prec.left(
+        seq(
+          field("root", $._scope_identifier),
+          field("scope_members", repeat(seq("::", $._scope_identifier))),
+          "::",
+          field("members", $.member_expression),
+        ),
+      ),
 
     member_expression: ($) =>
       prec.left(
-        seq(
-          field("root", $.identifier),
-          repeat1($.member_expr_member),
-          optional($.key_value),
+        choice(
+          prec(
+            2,
+            seq(
+              field("root", $.identifier),
+              repeat1($.member_expr_member),
+              optional($.key_value),
+            ),
+          ),
+          prec(
+            1,
+            seq(
+              field("root", $.identifier),
+              ".",
+              field("variant", $._field_identifier),
+              optional(seq(":", $.data_type)),
+            ),
+          ),
         ),
       ),
     member_expr_member: ($) =>
@@ -353,7 +392,6 @@ module.exports = grammar({
                 field("default", optional(seq("=", $._expression))),
               ),
             ),
-            optional(","),
           ),
         ),
         ")",
@@ -364,6 +402,7 @@ module.exports = grammar({
         PREC.primary,
         prec.left(
           choice(
+            "null",
             "int",
             "float",
             "dyn",
@@ -374,6 +413,7 @@ module.exports = grammar({
             "struct",
             prec.left(seq($.mutability, $.data_type)),
             seq("<", field("types", seq(commaSep1($.data_type))), ">"),
+            seq($._scope_identifier, "::", $.data_type),
             choice(
               seq("!", $.data_type),
               seq($.data_type, "!"),
@@ -404,6 +444,8 @@ module.exports = grammar({
       ),
 
     try_expression: ($) => prec(PREC.primary, seq("try", $._expression)),
+
+    debug_expression: ($) => prec(PREC.primary, seq("debug", $._expression)),
 
     not_expression: ($) =>
       prec(

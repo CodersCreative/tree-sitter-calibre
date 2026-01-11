@@ -24,6 +24,10 @@
           "named": true
         },
         {
+          "type": "debug_expression",
+          "named": true
+        },
+        {
           "type": "deref",
           "named": true
         },
@@ -97,6 +101,10 @@
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
           "named": true
         },
         {
@@ -212,8 +220,12 @@
       },
       "right": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -228,6 +240,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -307,6 +323,10 @@
             "named": true
           },
           {
+            "type": "scope_member_expression",
+            "named": true
+          },
+          {
             "type": "special_binary_expression",
             "named": true
           },
@@ -344,8 +364,12 @@
     "fields": {
       "left": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -360,6 +384,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -428,6 +456,10 @@
           },
           {
             "type": "scope",
+            "named": true
+          },
+          {
+            "type": "scope_member_expression",
             "named": true
           },
           {
@@ -540,8 +572,12 @@
       },
       "right": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -556,6 +592,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -627,6 +667,10 @@
             "named": true
           },
           {
+            "type": "scope_member_expression",
+            "named": true
+          },
+          {
             "type": "special_binary_expression",
             "named": true
           },
@@ -652,7 +696,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "assignment_expression",
@@ -668,6 +712,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -744,6 +792,10 @@
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
           "named": true
         },
         {
@@ -819,8 +871,12 @@
       },
       "caller": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -835,6 +891,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -906,6 +966,10 @@
             "named": true
           },
           {
+            "type": "scope_member_expression",
+            "named": true
+          },
+          {
             "type": "special_binary_expression",
             "named": true
           },
@@ -947,6 +1011,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -1023,6 +1091,10 @@
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
           "named": true
         },
         {
@@ -1112,7 +1184,130 @@
           "named": true
         },
         {
+          "type": "scope_identifier",
+          "named": true
+        },
+        {
           "type": "type_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "debug_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
+          "named": true
+        },
+        {
+          "type": "deref",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "func_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_declaration",
+          "named": true
+        },
+        {
+          "type": "imaginary_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "match_declaration",
+          "named": true
+        },
+        {
+          "type": "member_expression",
+          "named": true
+        },
+        {
+          "type": "not_expression",
+          "named": true
+        },
+        {
+          "type": "object_expression",
+          "named": true
+        },
+        {
+          "type": "parens",
+          "named": true
+        },
+        {
+          "type": "pipe_expression",
+          "named": true
+        },
+        {
+          "type": "ref",
+          "named": true
+        },
+        {
+          "type": "rune_literal",
+          "named": true
+        },
+        {
+          "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
+          "named": true
+        },
+        {
+          "type": "special_binary_expression",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "try_expression",
+          "named": true
+        },
+        {
+          "type": "type_binary_expression",
           "named": true
         }
       ]
@@ -1191,7 +1386,7 @@
       "required": false,
       "types": [
         {
-          "type": "key_type_list_object_val",
+          "type": "data_type",
           "named": true
         }
       ]
@@ -1218,8 +1413,12 @@
       },
       "value": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1234,6 +1433,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -1313,145 +1516,7 @@
             "named": true
           },
           {
-            "type": "special_binary_expression",
-            "named": true
-          },
-          {
-            "type": "stop_statement",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "try_expression",
-            "named": true
-          },
-          {
-            "type": "type_binary_expression",
-            "named": true
-          },
-          {
-            "type": "type_declaration",
-            "named": true
-          },
-          {
-            "type": "var_declaration",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "foreach_loop_type",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "assignment_expression",
-            "named": true
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "call_node_expression",
-            "named": true
-          },
-          {
-            "type": "deref",
-            "named": true
-          },
-          {
-            "type": "float_literal",
-            "named": true
-          },
-          {
-            "type": "func_expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "if_declaration",
-            "named": true
-          },
-          {
-            "type": "imaginary_literal",
-            "named": true
-          },
-          {
-            "type": "impl_declaration",
-            "named": true
-          },
-          {
-            "type": "int_literal",
-            "named": true
-          },
-          {
-            "type": "list_literal",
-            "named": true
-          },
-          {
-            "type": "loop_declaration",
-            "named": true
-          },
-          {
-            "type": "match_declaration",
-            "named": true
-          },
-          {
-            "type": "member_expression",
-            "named": true
-          },
-          {
-            "type": "not_expression",
-            "named": true
-          },
-          {
-            "type": "object_expression",
-            "named": true
-          },
-          {
-            "type": "parens",
-            "named": true
-          },
-          {
-            "type": "pipe_expression",
-            "named": true
-          },
-          {
-            "type": "ref",
-            "named": true
-          },
-          {
-            "type": "rune_literal",
-            "named": true
-          },
-          {
-            "type": "scope",
+            "type": "scope_member_expression",
             "named": true
           },
           {
@@ -1542,8 +1607,12 @@
     "fields": {
       "comparison": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1558,6 +1627,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -1630,6 +1703,10 @@
           },
           {
             "type": "scope",
+            "named": true
+          },
+          {
+            "type": "scope_member_expression",
             "named": true
           },
           {
@@ -1706,8 +1783,12 @@
       },
       "value": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1722,6 +1803,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -1790,6 +1875,10 @@
           },
           {
             "type": "scope",
+            "named": true
+          },
+          {
+            "type": "scope_member_expression",
             "named": true
           },
           {
@@ -1898,8 +1987,12 @@
       },
       "value": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1914,6 +2007,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -1993,6 +2090,10 @@
             "named": true
           },
           {
+            "type": "scope_member_expression",
+            "named": true
+          },
+          {
             "type": "special_binary_expression",
             "named": true
           },
@@ -2030,7 +2131,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "assignment_expression",
@@ -2046,6 +2147,14 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "data_type",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -2122,6 +2231,10 @@
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
           "named": true
         },
         {
@@ -2171,7 +2284,7 @@
       },
       "loop_type": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "loop_type",
@@ -2187,7 +2300,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "assignment_expression",
@@ -2206,6 +2319,10 @@
           "named": true
         },
         {
+          "type": "debug_expression",
+          "named": true
+        },
+        {
           "type": "deref",
           "named": true
         },
@@ -2215,10 +2332,6 @@
         },
         {
           "type": "for_loop_type",
-          "named": true
-        },
-        {
-          "type": "foreach_loop_type",
           "named": true
         },
         {
@@ -2290,6 +2403,10 @@
           "named": true
         },
         {
+          "type": "scope_member_expression",
+          "named": true
+        },
+        {
           "type": "special_binary_expression",
           "named": true
         },
@@ -2321,6 +2438,146 @@
     }
   },
   {
+    "type": "match_arm_start",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "variant": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "field_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "assignment_expression",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
+          "named": true
+        },
+        {
+          "type": "deref",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "func_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_declaration",
+          "named": true
+        },
+        {
+          "type": "imaginary_literal",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "match_declaration",
+          "named": true
+        },
+        {
+          "type": "member_expression",
+          "named": true
+        },
+        {
+          "type": "not_expression",
+          "named": true
+        },
+        {
+          "type": "object_expression",
+          "named": true
+        },
+        {
+          "type": "parens",
+          "named": true
+        },
+        {
+          "type": "pipe_expression",
+          "named": true
+        },
+        {
+          "type": "ref",
+          "named": true
+        },
+        {
+          "type": "rune_literal",
+          "named": true
+        },
+        {
+          "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
+          "named": true
+        },
+        {
+          "type": "special_binary_expression",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "try_expression",
+          "named": true
+        },
+        {
+          "type": "type_binary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "match_declaration",
     "named": true,
     "fields": {
@@ -2339,6 +2596,10 @@
         "required": false,
         "types": [
           {
+            "type": ";",
+            "named": false
+          },
+          {
             "type": "=",
             "named": false
           },
@@ -2356,6 +2617,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -2432,6 +2697,10 @@
           },
           {
             "type": "scope",
+            "named": true
+          },
+          {
+            "type": "scope_member_expression",
             "named": true
           },
           {
@@ -2542,7 +2811,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "assignment_expression",
@@ -2558,6 +2827,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -2633,6 +2906,10 @@
           "named": true
         },
         {
+          "type": "scope_member_expression",
+          "named": true
+        },
+        {
           "type": "special_binary_expression",
           "named": true
         },
@@ -2664,12 +2941,26 @@
             "named": true
           }
         ]
+      },
+      "variant": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "field_identifier",
+            "named": true
+          }
+        ]
       }
     },
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
+        {
+          "type": "data_type",
+          "named": true
+        },
         {
           "type": "key_value",
           "named": true
@@ -2692,8 +2983,12 @@
     "fields": {
       "operand": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -2708,6 +3003,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -2787,6 +3086,10 @@
             "named": true
           },
           {
+            "type": "scope_member_expression",
+            "named": true
+          },
+          {
             "type": "special_binary_expression",
             "named": true
           },
@@ -2856,123 +3159,7 @@
       "required": true,
       "types": [
         {
-          "type": "assignment_expression",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "call_node_expression",
-          "named": true
-        },
-        {
-          "type": "deref",
-          "named": true
-        },
-        {
-          "type": "float_literal",
-          "named": true
-        },
-        {
-          "type": "func_expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "if_declaration",
-          "named": true
-        },
-        {
-          "type": "imaginary_literal",
-          "named": true
-        },
-        {
-          "type": "impl_declaration",
-          "named": true
-        },
-        {
-          "type": "int_literal",
-          "named": true
-        },
-        {
-          "type": "list_literal",
-          "named": true
-        },
-        {
-          "type": "loop_declaration",
-          "named": true
-        },
-        {
-          "type": "match_declaration",
-          "named": true
-        },
-        {
-          "type": "member_expression",
-          "named": true
-        },
-        {
-          "type": "not_expression",
-          "named": true
-        },
-        {
-          "type": "object_expression",
-          "named": true
-        },
-        {
-          "type": "parens",
-          "named": true
-        },
-        {
-          "type": "pipe_expression",
-          "named": true
-        },
-        {
-          "type": "ref",
-          "named": true
-        },
-        {
-          "type": "rune_literal",
-          "named": true
-        },
-        {
-          "type": "scope",
-          "named": true
-        },
-        {
-          "type": "special_binary_expression",
-          "named": true
-        },
-        {
-          "type": "stop_statement",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "try_expression",
-          "named": true
-        },
-        {
-          "type": "type_binary_expression",
-          "named": true
-        },
-        {
-          "type": "type_declaration",
-          "named": true
-        },
-        {
-          "type": "var_declaration",
+          "type": "match_arm_start",
           "named": true
         }
       ]
@@ -2986,6 +3173,10 @@
         "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "=",
             "named": false
@@ -3004,6 +3195,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -3075,6 +3270,10 @@
             "named": true
           },
           {
+            "type": "scope_member_expression",
+            "named": true
+          },
+          {
             "type": "special_binary_expression",
             "named": true
           },
@@ -3124,7 +3323,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "assignment_expression",
@@ -3140,6 +3339,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -3216,6 +3419,10 @@
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
           "named": true
         },
         {
@@ -3255,7 +3462,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "assignment_expression",
@@ -3271,6 +3478,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -3347,6 +3558,10 @@
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
           "named": true
         },
         {
@@ -3443,6 +3658,46 @@
     }
   },
   {
+    "type": "scope_member_expression",
+    "named": true,
+    "fields": {
+      "members": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "member_expression",
+            "named": true
+          }
+        ]
+      },
+      "root": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "scope_identifier",
+            "named": true
+          }
+        ]
+      },
+      "scope_members": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "scope_identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -3465,6 +3720,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -3544,6 +3803,10 @@
           "named": true
         },
         {
+          "type": "scope_member_expression",
+          "named": true
+        },
+        {
           "type": "special_binary_expression",
           "named": true
         },
@@ -3580,8 +3843,12 @@
     "fields": {
       "left": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -3596,6 +3863,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -3667,6 +3938,10 @@
             "named": true
           },
           {
+            "type": "scope_member_expression",
+            "named": true
+          },
+          {
             "type": "special_binary_expression",
             "named": true
           },
@@ -3696,8 +3971,12 @@
       },
       "type": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -3712,6 +3991,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -3791,6 +4074,10 @@
             "named": true
           },
           {
+            "type": "scope_member_expression",
+            "named": true
+          },
+          {
             "type": "special_binary_expression",
             "named": true
           },
@@ -3828,7 +4115,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "assignment_expression",
@@ -3844,6 +4131,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -3923,6 +4214,10 @@
           "named": true
         },
         {
+          "type": "scope_member_expression",
+          "named": true
+        },
+        {
           "type": "special_binary_expression",
           "named": true
         },
@@ -3975,6 +4270,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -4043,6 +4342,10 @@
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "scope_member_expression",
           "named": true
         },
         {
@@ -4100,7 +4403,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "assignment_expression",
@@ -4116,6 +4419,10 @@
         },
         {
           "type": "call_node_expression",
+          "named": true
+        },
+        {
+          "type": "debug_expression",
           "named": true
         },
         {
@@ -4187,6 +4494,10 @@
           "named": true
         },
         {
+          "type": "scope_member_expression",
+          "named": true
+        },
+        {
           "type": "special_binary_expression",
           "named": true
         },
@@ -4211,8 +4522,12 @@
     "fields": {
       "left": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -4227,6 +4542,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -4295,6 +4614,10 @@
           },
           {
             "type": "scope",
+            "named": true
+          },
+          {
+            "type": "scope_member_expression",
             "named": true
           },
           {
@@ -4405,8 +4728,12 @@
       },
       "value": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -4421,6 +4748,10 @@
           },
           {
             "type": "call_node_expression",
+            "named": true
+          },
+          {
+            "type": "debug_expression",
             "named": true
           },
           {
@@ -4497,6 +4828,10 @@
           },
           {
             "type": "scope",
+            "named": true
+          },
+          {
+            "type": "scope_member_expression",
             "named": true
           },
           {
@@ -4636,11 +4971,23 @@
     "named": false
   },
   {
+    "type": "/\n/",
+    "named": false
+  },
+  {
     "type": "/=",
     "named": false
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
+    "named": false
+  },
+  {
+    "type": ";",
     "named": false
   },
   {
@@ -4712,6 +5059,10 @@
     "named": false
   },
   {
+    "type": "_",
+    "named": false
+  },
+  {
     "type": "as",
     "named": false
   },
@@ -4742,6 +5093,10 @@
   },
   {
     "type": "continue",
+    "named": false
+  },
+  {
+    "type": "debug",
     "named": false
   },
   {
@@ -4817,12 +5172,20 @@
     "named": false
   },
   {
+    "type": "null",
+    "named": false
+  },
+  {
     "type": "range",
     "named": false
   },
   {
     "type": "return",
     "named": false
+  },
+  {
+    "type": "scope_identifier",
+    "named": true
   },
   {
     "type": "str",

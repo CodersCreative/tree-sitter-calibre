@@ -2191,6 +2191,10 @@
             "named": true
           },
           {
+            "type": "if_let_comparison",
+            "named": true
+          },
+          {
             "type": "imaginary_literal",
             "named": true
           },

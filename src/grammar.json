@@ -1092,6 +1092,10 @@
                   },
                   {
                     "type": "SYMBOL",
+                    "name": "if_let_comparison"
+                  },
+                  {
+                    "type": "SYMBOL",
                     "name": "_statement"
                   }
                 ]

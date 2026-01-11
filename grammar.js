@@ -288,6 +288,7 @@ module.exports = grammar({
                   field("value", $._statement),
                 ),
               ),
+              $.if_let_comparison,
               $._statement,
             ),
           ),

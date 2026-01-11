@@ -128,6 +128,7 @@ module.exports = grammar({
     _expression: ($) =>
       prec.left(
         choice(
+          $.ternary,
           $.not_expression,
           $.special_binary_expression,
           $.type_binary_expression,
@@ -435,11 +436,18 @@ module.exports = grammar({
           ),
         ),
       ),
+    ternary: ($) =>
+      prec(
+        PREC.primary,
+        prec.left(
+          seq("(", $._expression, ")", "?", $._expression, ":", $._expression),
+        ),
+      ),
 
     assignment_expression: ($) =>
       prec.left(
         seq(
-          field("left", choice($.identifier, $.member_expression)),
+          field("left", choice($.identifier, $.member_expression, $.ternary)),
           field("operator", choice(...assignmentOperators)),
           field("right", $._statement),
         ),

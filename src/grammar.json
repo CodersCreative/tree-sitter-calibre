@@ -68,6 +68,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "ternary"
+          },
+          {
+            "type": "SYMBOL",
             "name": "not_expression"
           },
           {
@@ -2228,6 +2232,47 @@
         }
       }
     },
+    "ternary": {
+      "type": "PREC",
+      "value": 150,
+      "content": {
+        "type": "PREC_LEFT",
+        "value": 0,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": "?"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          ]
+        }
+      }
+    },
     "assignment_expression": {
       "type": "PREC_LEFT",
       "value": 0,
@@ -2247,6 +2292,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "member_expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "ternary"
                 }
               ]
             }

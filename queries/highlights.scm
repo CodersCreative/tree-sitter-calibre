@@ -82,6 +82,7 @@
 ; Keywords
 
 [
+  "extern"
   "break"
   "match"
   "const"
@@ -93,6 +94,8 @@
   "fn"
   "let"
   "struct"
+  "until"
+  "@overload"
 ] @keyword
 
 "return" @keyword.return

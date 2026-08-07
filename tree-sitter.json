@@ -7,10 +7,10 @@
       "title": "Calibre",
       "scope": "source.calibre",
       "file-types": [
-        "cal",
-        "cl"
+        "cal"
       ],
       "injection-regex": "^calibre$",
+      "highlights": "queries/highlights.scm",
       "class-name": "TreeSitterCalibre"
     }
   ],
